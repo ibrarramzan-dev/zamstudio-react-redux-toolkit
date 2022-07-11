@@ -1,0 +1,19 @@
+#layout-container {
+  display: flex;
+  height: 100vh;
+}
+#sidemenu {
+  width: 20%;
+  border-right: 2px solid gray;
+}
+#sidemenu ul li {
+  margin-bottom: 5px;
+  text-align: center;
+}
+#sidemenu ul li:hover {
+  background-color: rgb(208, 208, 208);
+  cursor: pointer;
+}
+#form-component {
+  width: 80%;
+}
