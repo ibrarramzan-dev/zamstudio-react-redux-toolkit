@@ -2,9 +2,9 @@ import { useState } from "react";
 import { Row, Col, Form, Input, Button } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import Layout from "../Layout";
-import { addType } from "../../store/features/typeSlice";
+import { updateType } from "../../store/features/typeSlice";
 
-const AddType = () => {
+const UpdateType = () => {
   const [image, setImage] = useState(null);
 
   const dispatch = useDispatch();
@@ -13,14 +13,13 @@ const AddType = () => {
 
   console.log("Image: ", image);
   const onFinish = (values) => {
-    // dispatch(addType({ ...values, image: image, token }));
-    dispatch(addType({ ...values, token }));
+    dispatch(updateType({ ...values, token }));
   };
 
   return (
     <Layout>
       <div>
-        <h2 style={{ textAlign: "center", marginTop: "10px" }}>Add Type</h2>
+        <h2 style={{ textAlign: "center", marginTop: "10px" }}>Update Type</h2>
         <Row>
           <Col xs={8}></Col>
           <Col xs={8}>
@@ -29,6 +28,13 @@ const AddType = () => {
               onFinish={onFinish}
               // onFinishFailed={onFinishFailed}
             >
+              <Form.Item
+                name="id"
+                rules={[{ required: true, message: "Please input id" }]}
+              >
+                <Input type="number" placeholder="Id" />
+              </Form.Item>
+
               <Form.Item
                 name="name"
                 rules={[{ required: true, message: "Please input name" }]}
@@ -50,10 +56,7 @@ const AddType = () => {
               >
                 <Input
                   type="file"
-                  onChange={(event) => {
-                    console.log(event.target.files);
-                    setImage(event.target.files[0]);
-                  }}
+                  onChange={(event) => setImage(event.target.files[0])}
                 />
               </Form.Item> */}
 
@@ -71,4 +74,4 @@ const AddType = () => {
   );
 };
 
-export default AddType;
+export default UpdateType;
